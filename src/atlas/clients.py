@@ -6,7 +6,19 @@ implements the minimal Protocol the logic layer expects.
 """
 from __future__ import annotations
 
+import os
+
 from .config import Settings
+
+# Groq Whisper detects audio format from the filename extension and 400s on unknown
+# ones. Telegram voice notes arrive as `.oga` (OGG/Opus), which Groq rejects — map it
+# to an accepted equivalent. Pure + module-level so it's unit-testable without the SDK.
+_GROQ_EXT_FIX = {".oga": ".ogg", ".opus": ".ogg"}
+
+
+def groq_audio_filename(audio_path: str) -> str:
+    stem, ext = os.path.splitext(os.path.basename(audio_path))
+    return stem + _GROQ_EXT_FIX.get(ext.lower(), ext.lower())
 
 
 class GroqLLM:
@@ -54,7 +66,7 @@ class GroqTranscriber:
     def transcribe(self, audio_path: str) -> str:
         with open(audio_path, "rb") as f:
             resp = self._client.audio.transcriptions.create(
-                file=(audio_path, f.read()),
+                file=(groq_audio_filename(audio_path), f.read()),
                 model=self._model,
                 # no forced language: the owner code-switches Arabic/English
             )
