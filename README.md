@@ -36,7 +36,8 @@ Energy, Reviews, Vision — one at a time, behind feature flags.
 
 ## Documentation
 
-- **Spec:** [`.kiro/specs/atlas-life-os/requirements.md`](.kiro/specs/atlas-life-os/requirements.md)
+- **The why** (journey, research, decisions, roadmap): [`docs/`](docs/README.md)
+- **The spec:** [`.kiro/specs/atlas-life-os/requirements.md`](.kiro/specs/atlas-life-os/requirements.md)
   · [`design.md`](.kiro/specs/atlas-life-os/design.md) · [`tasks.md`](.kiro/specs/atlas-life-os/tasks.md)
 - **Steering / operating rules:** [`.kiro/steering/project-rules.md`](.kiro/steering/project-rules.md)
 
