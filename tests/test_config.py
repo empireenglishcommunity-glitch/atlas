@@ -20,7 +20,7 @@ def test_load_settings_reads_env_and_types():
 def test_defaults_when_env_missing():
     s = cfg.load_settings({})
     assert s.owner_chat_id == 0
-    assert s.groq_model == "llama-3.3-70b-versatile"
+    assert s.groq_model == "openai/gpt-oss-120b"
     assert s.kokoro_voice == "af_heart"
     assert s.chronotype == "morning"
     assert s.brief_hour == 6

@@ -53,7 +53,10 @@ class Settings:
     owner_chat_id: int = 0
 
     groq_api_key: str = ""
-    groq_model: str = "llama-3.3-70b-versatile"
+    # NOTE: this Groq account's catalog has NO llama models — verified live 2026-08-31
+    # (available: openai/gpt-oss-120b|20b, qwen/qwen3.8-27b, groq/compound, allam-2-7b).
+    # gpt-oss-120b read Egyptian+English code-switch best. Override via GROQ_MODEL.
+    groq_model: str = "openai/gpt-oss-120b"
     groq_whisper_model: str = "whisper-large-v3"
 
     kokoro_url: str = "http://localhost:8880"
@@ -104,7 +107,7 @@ def load_settings(environ: dict | None = None) -> Settings:
         telegram_bot_token=get("TELEGRAM_BOT_TOKEN"),
         owner_chat_id=get_int("OWNER_CHAT_ID", 0),
         groq_api_key=get("GROQ_API_KEY"),
-        groq_model=get("GROQ_MODEL", "llama-3.3-70b-versatile"),
+        groq_model=get("GROQ_MODEL", "openai/gpt-oss-120b"),
         groq_whisper_model=get("GROQ_WHISPER_MODEL", "whisper-large-v3"),
         kokoro_url=get("KOKORO_URL", "http://localhost:8880"),
         kokoro_voice=get("KOKORO_VOICE", "af_heart"),
