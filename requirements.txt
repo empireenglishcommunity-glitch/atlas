@@ -1,0 +1,7 @@
+# Atlas runtime dependencies — all free, no usage caps
+python-telegram-bot==21.6      # Telegram bot: voice notes, photos, forwards, sends voice notes
+APScheduler==3.10.4            # scheduled jobs: 6 AM brief, evening close, guardian sweep
+groq==0.11.0                   # Groq API client: Whisper transcription + LLM understanding
+httpx==0.27.2                  # calling Kokoro TTS (localhost:8880) and any HTTP
+python-dotenv==1.0.1           # .env config
+tzdata==2024.2                 # pin Asia/Cairo so the container resolves the zone

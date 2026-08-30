@@ -1,0 +1,28 @@
+# secrets & env
+.env
+*.env
+!.env.example
+
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# atlas runtime data (never commit a person's life)
+data/
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+audio_cache/
+*.oga
+*.ogg
+*.mp3
+
+# os
+.DS_Store

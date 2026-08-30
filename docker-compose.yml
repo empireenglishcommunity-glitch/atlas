@@ -1,0 +1,23 @@
+services:
+  atlas:
+    build: .
+    container_name: atlas
+    restart: unless-stopped
+    env_file: .env
+    # host networking so the container can reach Kokoro on 127.0.0.1:8880
+    network_mode: host
+    volumes:
+      - atlas-data:/app/data
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 384M
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  atlas-data:
